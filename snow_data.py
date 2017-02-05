@@ -2,6 +2,9 @@ import requests
 
 from bs4 import BeautifulSoup
 
+#NOTE: for some reason the year is off by one. Putting '1981' in the POST data gives 
+#values from 1980. Oh well. 
+
 page = []
 
 
@@ -19,4 +22,8 @@ soup = BeautifulSoup(page.text, "html5lib")
 
 table_cells = soup.find_all('td')
 
-print(table_cells)
+
+for i in range(len(table_cells)):
+	if '1980' in table_cells[i].text:
+		print(table_cells[i + 3].text)
+
