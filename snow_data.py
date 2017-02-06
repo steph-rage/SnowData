@@ -13,7 +13,7 @@ snow_db.execute('CREATE TABLE snow_level (DAY date, SNOW_LEVEL int)')
 
 for year in range(1980, 2017):
 
-	POST_data = {'sitenum':'515', 'report':'STAND', 'timeseries':'Hourly', 'interval':'YEAR='+str(year), 'temp_unit':'8', 'format':'view', 'autoscale':'false', 'legendpos':'right', 'userEmail':'', 'intervalDirection':'-'}
+	POST_data = {'sitenum':'515', 'report':'STAND', 'timeseries':'Daily', 'interval':'YEAR='+str(year), 'temp_unit':'8', 'format':'view', 'autoscale':'false', 'legendpos':'right', 'userEmail':'', 'intervalDirection':'-'}
 	page = requests.post('https://wcc.sc.egov.usda.gov/nwcc/view', POST_data)
 
 	soup = BeautifulSoup(page.text, "html5lib")
