@@ -26,7 +26,7 @@ for year in range(1980, 2017):
 snow_db.execute('DELETE FROM snow_level WHERE snow_level IS -99.9')
 snow_db.execute('DELETE FROM snow_level WHERE day LIKE "%Washington%"')
 
-for year in range(1980, 2016):
+for year in range(1980, 2017):
 	season = str(year)[2:] + "-" + str(year + 1)[2:]
 	start_date = str(year) + "-08-25"
 	end_date = str(year + 1) + "-08-26"

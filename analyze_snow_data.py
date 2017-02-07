@@ -8,9 +8,10 @@ data = cursor.execute("SELECT day, MAX(snow_level), season FROM snow_level GROUP
 
 print "Date that Max Level of Snow is Reached:"
 print "---------------------------------------"
-print "Date        Snow Level       Season"
-for _ in range(34):
-	print data.fetchone()
+print "Date          Max Snow Level       Season"
+for _ in range(33):
+	current = data.fetchone()
+	print("{}          {}          {}".format(current[0], current[1], current[2]))
 
 snow_db.commit()
 snow_db.close()
