@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 
 
 snow_db = sqlite3.connect('snow-database.db')
-snow_db.execute('CREATE TABLE snow_level (DAY date, SNOW_LEVEL int)')
+snow_db.execute('CREATE TABLE snow_level (day DATE, snow_level INT, season BLOB)')
 
 
 for year in range(1980, 2017):
@@ -21,7 +21,16 @@ for year in range(1980, 2017):
 
 	for i in range(len(table_cells)):
 		if str(year - 1) in table_cells[i].text:
-			snow_db.execute('INSERT INTO snow_level VALUES (?, ?)', (table_cells[i].text, table_cells[i+3].text))
+			snow_db.execute('INSERT INTO snow_level (day, snow_level) VALUES (?, ?)', (table_cells[i].text, table_cells[i+2].text))
+
+snow_db.execute('DELETE FROM snow_level WHERE snow_level IS -99.9')
+snow_db.execute('DELETE FROM snow_level WHERE day LIKE "%Washington%"')
+
+for year in range(1980, 2016):
+	season = str(year)[2:] + "-" + str(year + 1)[2:]
+	start_date = str(year) + "-08-25"
+	end_date = str(year + 1) + "-08-26"
+	snow_db.execute('UPDATE snow_level SET season = ? WHERE day BETWEEN ? AND ?', (season, start_date, end_date))
 
 
 snow_db.commit()
