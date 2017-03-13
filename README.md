@@ -4,7 +4,7 @@ This Python program currently uses web scraping and Beautiful Soup to get inform
 
 ## Work in Progress - Next Steps
 
-So far the web scraping is successful, but gets way more than one number pay day! Working on figuring out why and fixing that. Next up, trying to figure out the most interesting ways to organize the data in the database - how could a user click different options to get answers to different questions?
+Web scraping is successful. Next up, trying to figure out the most interesting ways to organize the data in the database - how could a user click different options to get answers to different questions?
 
 
 ## Getting Started
